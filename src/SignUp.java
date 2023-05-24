@@ -7,92 +7,14 @@
  *
  * @author silvi
  */
-import java.util.*;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.AbstractButton;
-import javax.swing.JOptionPane;
-import java.sql.*;
-
 public class SignUp extends javax.swing.JFrame {
 
     /**
      * Creates new form SignIn
      */
-    
-    public Statement stm;
-    public Connection con;
-    public PreparedStatement pst;
-    public ResultSet rs = null;
-
-    String test;
-    String test2;
-    
-    public String getTest(){
-    return test;
-    }
-    public void setTest(String test){
-     this.test = username.getText();
-    }
-
-    
-    public String getTest2(){
-    return test;
-    }
-    public void setTest2(String test2){
-     this.test2 = password.getText();
-    }
-  
-
-    public class DisplayKalmi{
-        public DisplayKalmi(){
-            try{
-                final String DATABASE_URL = "jdbc:mysql://localhost:3306/projectkalmi"; 
-                String user = "root";
-                String pass = "";
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con = DriverManager.getConnection(DATABASE_URL, "root", "");
-                stm = con.createStatement();
-                
-                
-            }catch(ClassNotFoundException | SQLException e){
-                JOptionPane.showMessageDialog(null, "Connection Gagal");
-            }
-        }
-    }
     public SignUp() {
-       
         initComponents();
-        new DisplayKalmi();
     }
-    /*Method checkSignUp*/
-           public boolean checkSignUp(String usernameRegist)
-            {
-                try {
-                     String sqlcom = "select * from data_registrasi";
-                     rs = con.createStatement().executeQuery(sqlcom);
-                    while(rs.next()){
-                        if(username.equals(rs.getString("username"))){
-                            return true;
-                        }
-                    }
-                } catch (Exception e) {
-                    System.out.println(e.toString());
-                }
-                return false;
-            } 
-           /*Method radioButton gender*/
-            public String gender(){
-                  if(pria.isSelected()){
-                        return "Pria";
-                   }else{
-                        return "Wanita";
-                         }
-                }
-            
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,15 +28,16 @@ public class SignUp extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
-        password = new javax.swing.JPasswordField();
+        user = new javax.swing.JTextField();
+        pw = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         cekPass = new javax.swing.JCheckBox();
-        signUp = new javax.swing.JButton();
+        signIn = new javax.swing.JButton();
         login = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -129,21 +52,31 @@ public class SignUp extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/g1.png"))); // NOI18N
 
+        jLabel10.setFont(new java.awt.Font("OCR A Extended", 3, 48)); // NOI18N
+        jLabel10.setText("WELCOME TO KALMI");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel10))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(59, 59, 59)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         jPanel2.setBackground(new java.awt.Color(146, 173, 255));
@@ -157,9 +90,9 @@ public class SignUp extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel3.setText("PASSWORD");
 
-        password.addActionListener(new java.awt.event.ActionListener() {
+        pw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+                pwActionPerformed(evt);
             }
         });
 
@@ -172,17 +105,11 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
-        signUp.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        signUp.setText("SIGN UP");
-        signUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signUpActionPerformed(evt);
-            }
-        });
+        signIn.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        signIn.setText("SIGN UP");
 
         login.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         login.setText("already have an account? Login now!");
-        login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginMouseClicked(evt);
@@ -220,7 +147,7 @@ public class SignUp extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -235,16 +162,16 @@ public class SignUp extends javax.swing.JFrame {
                                     .addGap(5, 5, 5)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel7))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(pw, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(65, 65, 65))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(signUp, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(signIn, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
                                 .addComponent(login)
@@ -269,7 +196,7 @@ public class SignUp extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
@@ -279,7 +206,7 @@ public class SignUp extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pw, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cekPass)
                 .addGap(21, 21, 21)
@@ -294,7 +221,7 @@ public class SignUp extends javax.swing.JFrame {
                             .addComponent(pria)))
                     .addComponent(jLabel9))
                 .addGap(33, 33, 33)
-                .addComponent(signUp, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signIn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(login)
                 .addGap(109, 109, 109))
@@ -319,16 +246,16 @@ public class SignUp extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+    private void pwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_pwActionPerformed
 
     private void cekPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cekPassActionPerformed
         // TODO add your handling code here:
         if(cekPass.isSelected()) {
-            password.setEchoChar((char)0);
+            pw.setEchoChar((char)0);
         }else{
-            password.setEchoChar('*');
+            pw.setEchoChar('*');
         }
     }//GEN-LAST:event_cekPassActionPerformed
 
@@ -346,38 +273,6 @@ public class SignUp extends javax.swing.JFrame {
     private void priaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_priaActionPerformed
-
-    private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
-        // TODO add your handling code here:
-        String tampungSignUp = username.getText();
-        if(username.getText().equalsIgnoreCase("")|| password.getText().equalsIgnoreCase(null) || gender().equalsIgnoreCase("")){
-               JOptionPane.showMessageDialog(null, "Lengkapi data dengan benar!", "Warning", JOptionPane.ERROR_MESSAGE);
-        }
-          if(checkSignUp(username.getText())){    
-          JOptionPane.showMessageDialog(null, "Username ini sudah digunakan", "Warning", JOptionPane.ERROR_MESSAGE);
-        }else{
-            if(password.getText().length() < 8 &&  !password.getText().equalsIgnoreCase(null)){
-              JOptionPane.showMessageDialog(null, "password harus minimal panjang 8", "Message", JOptionPane.INFORMATION_MESSAGE);
-                 }else{
-                   String sql = "insert into data_registrasi (username, password, jeniskelamin) values (?,?,?)";
-               try {
-                   pst = con.prepareStatement(sql);
-                   pst.setString(1, username.getText());
-                   pst.setString(2, password.getText());
-                   pst.setString(3, gender());
-                   pst.executeUpdate();
-                   JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan!");
-                   
-               }catch(SQLException ex) {
-                 JOptionPane.showMessageDialog(this, ex.getMessage());
-               }
-               Login object = new Login();
-               object.setVisible(true);
-        }
-      }
-     
-         
-    }//GEN-LAST:event_signUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,6 +316,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox cekPass;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -432,10 +328,10 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel login;
-    private javax.swing.JPasswordField password;
     private javax.swing.JRadioButton pria;
-    private javax.swing.JButton signUp;
-    private javax.swing.JTextField username;
+    private javax.swing.JPasswordField pw;
+    private javax.swing.JButton signIn;
+    private javax.swing.JTextField user;
     private javax.swing.JRadioButton wanita;
     // End of variables declaration//GEN-END:variables
 }

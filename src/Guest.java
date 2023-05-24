@@ -15,9 +15,6 @@ public class Guest extends javax.swing.JFrame {
     public Guest() {
         initComponents();
     }
-    
-  
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,17 +33,17 @@ public class Guest extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tinggiGuest = new javax.swing.JTextField();
+        user = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         wanita = new javax.swing.JRadioButton();
         pria = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        beratGuest = new javax.swing.JTextField();
+        user1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        indeksBmiGuest = new javax.swing.JTextField();
+        user2 = new javax.swing.JTextField();
         calculate = new javax.swing.JButton();
         clear = new javax.swing.JButton();
         exit = new javax.swing.JButton();
@@ -95,9 +92,9 @@ public class Guest extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel3.setText("BERAT");
 
-        tinggiGuest.addActionListener(new java.awt.event.ActionListener() {
+        user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tinggiGuestActionPerformed(evt);
+                userActionPerformed(evt);
             }
         });
 
@@ -133,9 +130,9 @@ public class Guest extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel4.setText("BMI");
 
-        indeksBmiGuest.addActionListener(new java.awt.event.ActionListener() {
+        user2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                indeksBmiGuestActionPerformed(evt);
+                user2ActionPerformed(evt);
             }
         });
 
@@ -173,13 +170,13 @@ public class Guest extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(indeksBmiGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(user2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tinggiGuest, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                            .addComponent(beratGuest)
+                            .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                            .addComponent(user1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -198,8 +195,8 @@ public class Guest extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, 126, Short.MAX_VALUE))))
-                .addGap(14, 14, 14))
+                            .addComponent(jComboBox1, 0, 126, Short.MAX_VALUE))
+                        .addGap(14, 14, 14))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addComponent(calculate)
@@ -228,17 +225,17 @@ public class Guest extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tinggiGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(beratGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(user1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(indeksBmiGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(user2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -278,32 +275,20 @@ public class Guest extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_priaActionPerformed
 
-    private void tinggiGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinggiGuestActionPerformed
+    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tinggiGuestActionPerformed
+    }//GEN-LAST:event_userActionPerformed
 
-    private void indeksBmiGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indeksBmiGuestActionPerformed
+    private void user2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_indeksBmiGuestActionPerformed
+    }//GEN-LAST:event_user2ActionPerformed
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
         // TODO add your handling code here:
-       
     }//GEN-LAST:event_calculateActionPerformed
 
-       public String gender(){
-                  if(pria.isSelected()){
-                        return "Pria";
-                   }else{
-                        return "Wanita";
-                         }
-                }
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
-        tinggiGuest.setText("");
-        beratGuest.setText("");
-        indeksBmiGuest.setText("");
-        buttonGroup1.clearSelection();
     }//GEN-LAST:event_clearActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -349,12 +334,10 @@ public class Guest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField beratGuest;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton calculate;
     private javax.swing.JButton clear;
     private javax.swing.JButton exit;
-    private javax.swing.JTextField indeksBmiGuest;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -369,7 +352,9 @@ public class Guest extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton pria;
-    private javax.swing.JTextField tinggiGuest;
+    private javax.swing.JTextField user;
+    private javax.swing.JTextField user1;
+    private javax.swing.JTextField user2;
     private javax.swing.JRadioButton wanita;
     // End of variables declaration//GEN-END:variables
 }

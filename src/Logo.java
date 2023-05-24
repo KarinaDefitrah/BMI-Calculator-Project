@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.util.*;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +11,14 @@
  * @author silvi
  */
 public class Logo extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form Logo
      */
     public Logo() {
         initComponents();
+        
     }
 
     /**
@@ -25,22 +30,68 @@ public class Logo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        loadingBar = new javax.swing.JProgressBar();
+        loading = new javax.swing.JLabel();
+        angka = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/logo masuk.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 34, 567, 418));
+
+        loadingBar.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                loadingBarAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jPanel1.add(loadingBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 675, 1240, 19));
+
+        loading.setText("Loading......");
+        jPanel1.add(loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 653, 171, -1));
+
+        angka.setText("0 %");
+        jPanel1.add(angka, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 660, 30, -1));
+
+        jLabel4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 60)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(50, 89, 165));
+        jLabel4.setText("Kalkulator BMI");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 458, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(959, 228, 37, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/warna1.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loadingBarAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_loadingBarAncestorAdded
+        // TODO add your handling code here:
+                
+    }//GEN-LAST:event_loadingBarAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -70,13 +121,47 @@ public class Logo extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Logo().setVisible(true);
-            }
-        });
-    }
 
+        Logo lg = new Logo();
+        lg.setVisible(true);
+        
+    try{
+    for(int i = 0; i < 101; i++){
+        Thread.sleep(30);
+        lg.angka.setText(i + "%");
+        
+        if(i==10){
+            lg.loading.setText("Turning On Module.....");
+        }if(i==20){
+            lg.loading.setText("Loading Module.....");
+        }if(i==50){
+            lg.loading.setText("Connect to Database.....");
+        }if(i==70){
+            lg.loading.setText("Connect Succesful!!!");
+        }if(i==80){
+            lg.loading.setText("Launching Application...");
+        }if(i==100){
+            lg.setVisible(false);
+        }
+        lg.loadingBar.setValue(i);
+    }
+    }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+    }
+    
+    Kalmi kal = new Kalmi();
+    kal.setVisible(true);
+    
+    
+  }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel angka;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel loading;
+    private javax.swing.JProgressBar loadingBar;
     // End of variables declaration//GEN-END:variables
 }
